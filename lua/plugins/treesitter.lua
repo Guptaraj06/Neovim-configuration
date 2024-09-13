@@ -14,12 +14,21 @@ return {
       highlight = {
         enable = true,
       },
+
+      sync_install = false,
+
+      auto_install = true,
+
+      ignore_install = {},
+
       -- enable indentation
       indent = { enable = true },
       -- enable autotagging (w/ nvim-ts-autotag plugin)
       autotag = {
         enable = true,
       },
+
+      modules = {},
       -- ensure these language parsers are installed
       ensure_installed = {
         "json",
@@ -42,6 +51,7 @@ return {
         "query",
         "vimdoc",
         "cpp",
+        "python",
       },
       incremental_selection = {
         enable = true,
