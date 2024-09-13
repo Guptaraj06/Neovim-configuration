@@ -75,6 +75,30 @@ return {
     end,
   },
   {
+    "mfussenegger/nvim-dap-python",
+    ft = "python",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-dap-ui",
+    },
+    config = function(_, opts)
+      local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+      require("dap-python").setup(path)
+      local keymap = vim.keymap
+      keymap.set("n", "<leader>tc", function()
+        if vim.bo.filetype == "python" then
+          require("dap-python").test_class()
+        end
+      end)
+
+      keymap.set("n", "<leader>tm", function()
+        if vim.bo.filetype == "python" then
+          require("dap-python").test_method()
+        end
+      end)
+    end,
+  },
+  {
     "jay-babu/mason-nvim-dap.nvim",
     event = "VeryLazy",
     dependencies = {
@@ -88,6 +112,7 @@ return {
         ensure_installed = {
           "codelldb",
           "js-debug-adapter",
+          "debugpy",
         },
       })
     end,
